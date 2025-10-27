@@ -20,7 +20,7 @@ $$
 F(x_1, \ldots, x_n) = C(F_1(x_1), \ldots, F_n(x_n)), \quad C: [0,1]^n \rightarrow [0,1].
 $$
 
-This decomposition isolates the dependence structure from marginal behavior, allowing independent modeling of each component.  
+This decomposition isolates the dependence structure from marginal behavior which allows independent modeling of each component.  
 The transformation
 
 $$

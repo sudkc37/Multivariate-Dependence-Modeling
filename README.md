@@ -100,17 +100,9 @@ $$
 
 This limitation leads to underestimation of joint extreme events. Although maximum likelihood estimation (MLE) reproduces observed correlations, it fails to capture clustering in extreme losses.
 
-<h4>2.2. Clayton Copula</h4>
-The Clayton copula emphasizes lower-tail dependence and is given by:
 
-$$
-C_{\theta}(u_1, \ldots, u_n) =
-\left( \sum_{i=1}^{n} u_i^{-\theta} - n + 1 \right)^{-1/\theta}, \quad \theta > 0
-$$
 
-Fitted parameters confirm stronger lower-tail clustering, consistent with the empirical evidence of joint market crashes. Simulations based on this copula reproduce joint crash behavior observed in real data.
-
-<h4>2.3. Vine Copulas</h4>
+<h4>2.2. Vine Copulas</h4>
 
 High-dimensional dependence structures are modeled using vine copulas which decompose multivariate dependencies into bivariate components. For a $d$-dimensional continuous random vector $(X_1, X_2, \ldots, X_d)$ with marginal densities $f_i(x_i)$ and corresponding cumulative distribution functions $F_i(x_i)$, the joint density function can be decomposed into a product of its marginal densities and a series of conditional bivariate copula densities as follows:
 
@@ -166,7 +158,7 @@ $((1, k+1 \mid 2, \ldots, k), (2, k+2 \mid 3, \ldots, k+1), \ldots)$
 
 Model successfully captured the strong positive dependencies among traditional equity indices (NASDAQ, S&P 500, Dow Jones, Russell 2000), as evidenced by excellent overlap between simulated (blue) and original (orange) data in these pairwise plots. The model effectively reproduces both linear and non-linear dependence patterns across most variable pairs, with 2D plots showing good alignment in correlation structures and 3D plots demonstrating adequate capture of multivariate relationships. Bitcoin (BTC-USD) exhibits weaker and more scattered dependencies with traditional equity indices, which the D-vine captures with moderate success but shows some density concentration differences. The sequential pairs like ^IXIC vs ^GSPC and ^GSPC vs ^DJI demonstrate particularly strong model performance, reflecting the D-vine's strength in modeling adjacent variables in its path structure. However, the D-vine's sequential path structure may not optimally represent all complex dependencies, as it assumes relationships are primarily mediated through neighboring variables in the ordering, potentially missing direct dependencies between non-adjacent pairs and being sensitive to variable sequencing. For example, if Bitcoin (BTC-USD) and the Russell 2000 (^RUT) are not adjacent in the sequence, their direct relationship must be modeled through intermediate variables, which may explain why plots like ^RUT vs BTC-USD show noticeable density differences between simulated and original data despite both variables having strong individual relationships with other indices.
 
-<h4>2.3.2. C-vines</h4>
+<h4>2.2.2. C-vines</h4>
 
 For a Canonical Vine (C-vine) with root nodes $(1, 2, \ldots, d-1\)$, the joint density can be expressed as:
 
@@ -198,15 +190,16 @@ Each tree in the C-vine has a central node connected to all others, forming a hi
 
 <p align="center">
   <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Cvine2D.png" alt="Bivariate C-Vine Copula" width="45%" height="30%">
-  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Rvine3D.png" alt="Trivariate R-Vine Copula" width="43%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Cvine3D.png" alt="Trivariate C-Vine Copula" width="43%" height="30%">
 </p>
 
 <p align="center">Vine
-  <em>Figure 4: (Left) Bivariate R-Vine Copula Fit — (Right) Trivariate R-Vine Copula Fit</em>
+  <em>Figure 4: (Left) Bivariate C-Vine Copula Fit — (Right) Trivariate C-Vine Copula Fit</em>
 </p>
 
+The model's star structure, where each tree has a central node connecting to all others appears effective for modeling relationships where one variable acts as a hub. This phenomenon is visible in plots involving major indices that show consistent correlation patterns. However, the C-vine's structure imposes a rigid hierarchical dependency assumption where all relationships must flow through central nodes at each level. For example, in plots like ^IXIC vs ^RUT or BTC-USD vs ^DJI, the visible dispersion between simulated and original data suggests that forcing these relationships to be mediated through a central variable (rather than allowing direct connections) may inadequately capture the true dependence structure. This limitation becomes evident when variables like Bitcoin have fundamentally different market drivers than traditional equity indices and may not naturally relate through the same hub variables.
 
-<h4>2.3.3. R-vines</h4>
+<h4>2.2.3. R-vines</h4>
 
 Regular vines (R-vine) are the most general class of vine copulas, encompassing both C-vines and D-vines as special cases.The joint density for a $d$-dimensional continuous random vector is expressed as:
 
@@ -240,4 +233,102 @@ In tree $( T_j \)$, two nodes can be connected only if their corresponding edges
 
 The model successfully captures both strong dependencies among equity indices (^IXIC vs ^GSPC, ^GSPC vs ^DJI) and weaker, more complex relationships involving Bitcoin, with particularly improved performance visible in plots like ^RUT vs BTC-USD vs ^DJI and ^NBI vs BTC-USD where the density distributions align more closely than in the D-vine results. The 3D plots reveal that the R-vine effectively models conditional dependencies and multivariate structures without being constrained to sequential paths, allowing direct modeling of relationships between any variable pairs regardless of their position in the structure. However, the R-vine's increased flexibility comes at the cost of higher computational complexity and potential overfitting risk—for example, in plots like ^RUT vs BTC-USD vs ^DJI, while the simulated data closely matches the original's dense clustering patterns, this tight fit may indicate the model is capturing sample-specific noise rather than generalizable market relationships, particularly problematic given Bitcoin's high volatility and relatively short history compared to traditional equity indices, which could lead to poor performance when market dynamics shift.
 
+<h4>2.3. Clayton Copula</h4>
+The Clayton copula emphasizes lower-tail dependence and is given by:
 
+$$
+C_{\theta}(u_1, \ldots, u_n) =
+\left( \sum_{i=1}^{n} u_i^{-\theta} - n + 1 \right)^{-1/\theta}, \quad \theta > 0
+$$
+
+Fitted parameters confirm stronger lower-tail clustering, consistent with the empirical evidence of joint market crashes. Simulations based on this copula reproduce joint crash behavior observed in real data.
+
+<h3>3. Value at Risk (VaR) Analysis</h3>
+
+We estimate the 5-day Value at Risk (VaR) at a 99% confidence level for an equally-weighted portfolio of six financial assets with an initial value of $100,000. We formally define VaR as:
+
+
+$$
+\text{VaR}_{\alpha} = -\inf \{ x \in \mathbb{R} : F_R(x) \geq 1 - \alpha \}
+$$
+
+where $( F_R \)$ is the cumulative distribution function (CDF) of the portfolio returns $( R \)$, and  
+$( \alpha = 0.99 \)$ represents the 99% confidence level. We construct an equally-weighted portfolio where each asset receives equal dollar allocation:
+
+$$
+w_i = \frac{n \cdot P_i}{V_0}
+$$
+
+where:
+
+- $V_0$ — initial portfolio value  
+- $n$ — number of assets  
+- $P_i$ — current price of asset $( i \)$ 
+- $w_i$ — number of shares (portfolio weight) allocated to asset $( i \)$
+
+<h4>3.1. Simulation Approach</h4>
+Our VaR estimation employs six different methods to model portfolio return distributions:
+
+<h4>3.1.1.  Copula-Based Methods (Gaussian, Clayton, D-vine, C-vine, R-vine):</h4>
+
+For each copula model we:
+
+- generate $( N \)$ realizations from the fitted copula $( C_{\theta} \)$:
+
+$$
+\mathbf{U}_j = (U_{1,j}, \ldots, U_{n,j}) \sim C_{\theta}(\mathbf{u}), \quad j = 1, \ldots, N
+$$
+
+- Transform to asset returns using fitted marginal distributions:
+
+$$
+\tilde{r}_{i,j} = \Phi^{-1}(U_{i,j}; \mu_i, \sigma_i)
+$$
+
+where $( \Phi^{-1} \)$ denotes the inverse CDF (quantile function) of the chosen marginal    
+   distribution for asset $( i \)$.
+
+- Compute Portfolio Returns per Scenario:
+
+$$
+R_j = \sum_{i=1}^{n} \tilde{r}_{i,j} \cdot w_i
+$$
+
+- Aggregate into 5-Day Rolling Returns:
+
+$$
+R_j^{(5)} = \sum_{t=0}^{4} R_{j+t}
+$$
+
+- Estimate the 99% VaR:
+
+$$
+\text{VaR}_{0.99} = -Q_{0.01}(R^{(5)}) \times V_0
+$$
+
+   where $( Q_{0.01}(\cdot) \)$ denotes the 1st percentile (empirical quantile).
+
+<h4>3.1.2.  Covariance Method (Parametric Approach):</h4>
+We will use historical portfolio returns directly:
+
+- Compute historical portfolio returns:
+
+ $$
+R_t = \sum_{i=1}^{n} r_{i,t} \cdot w_i
+$$
+
+
+- Compute 5-day rolling returns from historical data.
+- Estimate VaR empirically:
+
+
+$$
+\text{VaR}_{0.99} = - \text{Percentile}(R^{(5)}, 0.01) \times V_0
+$$
+
+
+<p align="center">
+<img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/log-price.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
+ <br>
+  <em>Figure 1: Six Years Log Price”</em>
+</p>

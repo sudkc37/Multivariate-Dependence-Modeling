@@ -39,7 +39,15 @@ $$
 r_t = \log\left(\frac{P_t}{P_{t-1}}\right)
 $$
 
-The analysis reveals significant deviations from normality:
+
+<p align="center">
+<img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/log-price.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
+ <br>
+  <em>Figure: Six Years Log Price”</em>
+</p>
+
+
+To capture these distributional characteristics more accurately, I fit several parametric distributions like Normal, Student-t, and Cauchy. The Student-t and Cauchy models provide a superior fit, particularly in the tails. To ensure robustness, I also employ empirical cumulative distribution functions (CDFs), which avoid restrictive parametric assumptions and offer improved tail modeling performance. The analysis reveals significant deviations from normality:
 
 - **Excess kurtosis:** All series are leptokurtic exhibiting heavier tails than Gaussian distributions.  
 - **Skewness:** Most series show negative skewness indicating a higher likelihood of extreme losses.  
@@ -49,10 +57,10 @@ The analysis reveals significant deviations from normality:
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/descriptions.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
  <br>
-  <em>Figure: Marginal Distributions”</em>
+  <em>Figure: Marginal Distributions</em>
 </p>
 
-To capture these distributional characteristics more accurately, I fit several parametric distributions like Normal, Student-t, and Cauchy. The Student-t and Cauchy models provide a superior fit, particularly in the tails. To ensure robustness, I also employ empirical cumulative distribution functions (CDFs), which avoid restrictive parametric assumptions and offer improved tail modeling performance.
+
 
 
 <h3>2. Copula Models and Estimation</h3>
@@ -63,7 +71,14 @@ $$
 C_{\Sigma}(u_1, \ldots, u_n) = \Phi_{\Sigma}\big(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_n)\big)
 $$
 
-While computationally tractable, it exhibits tail independence:
+where, 
+
+- $\Phi_{\Sigma}$ — multivariate normal cumulative distribution function (CDF) with correlation matrix $\Sigma$  
+- $\Sigma$ — correlation matrix  
+- $\Phi^{-1}$ — inverse standard normal CDF  
+- $u_i \in [0,1]$ — uniform marginals
+
+The strong positive correlations among traditional equity indices (NBI, IXIC, GSPC, RUT, DJI) which form tight ellipsoidal clusters in both 2D and 3D visualizations, with simulated data (orange) closely overlapping the original observations (blue). The model also correctly reproduces the weak dependence between BTC-USD and traditional assets, generating appropriately scattered uniform distributions for these pairs. While computationally tractable, it exhibits tail independence:
 
 $$
 \lambda_L = \lambda_U = 0

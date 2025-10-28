@@ -330,5 +330,5 @@ $$
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/VaR.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
  <br>
-  <em>Figure 1: VaR”</em>
+  <em>Figure 1: Portfolio VaR</em>
 </p>

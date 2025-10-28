@@ -47,7 +47,7 @@ $$
 </p>
 
 
-To capture these distributional characteristics more accurately, I fit several parametric distributions like Normal, Student-t, and Cauchy. The Student-t and Cauchy models provide a superior fit, particularly in the tails. To ensure robustness, I also employ empirical cumulative distribution functions (CDFs), which avoid restrictive parametric assumptions and offer improved tail modeling performance. The analysis reveals significant deviations from normality:
+To capture these distributional characteristics more accurately, I fitted several parametric distributions like Normal, Student-t, and Cauchy. The Student-t and Cauchy models provide a superior fit, particularly in the tails. To ensure robustness, I also employ empirical cumulative distribution functions (CDFs), which avoid restrictive parametric assumptions and offer improved tail modeling performance. The analysis reveals significant deviations from normality:
 
 - **Excess kurtosis:** All series are leptokurtic exhibiting heavier tails than Gaussian distributions.  
 - **Skewness:** Most series show negative skewness indicating a higher likelihood of extreme losses.  

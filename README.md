@@ -16,7 +16,7 @@
 Traditional Markowitz’s Modern Portfolio Theory relies on covariance-based risk measures and assume multivariate normal returns. However, asset returns often exhibit heavy tails, skewness, and asymmetric dependencies, violating these assumptions. Classical linear correlation measures fail to distinguish co-movements in gains versus losses, limiting their usefulness for extreme-event risk management.
 
 
-Copula theory provides a rigorous mathematical framework to overcome these limitations leveraging Sklar’s theorem. By Sklar’s theorem any multivariate distribution with continuous marginals $F_1, \ldots, F_n$ can be decomposed into marginal distributions and a copula $C$ capturing dependence:
+Copula theory provides a rigorous mathematical framework to overcome these limitations leveraging Sklar’s theorem. By Sklar’s theorem any multivariate distribution with continuous marginals $F_1, \ldots, F_n$ can be decomposed into marginal distributions and a copula $C$ capturing the dependenceies:
 
 $$
 F(x_1, \ldots, x_n) = C(F_1(x_1), \ldots, F_n(x_n)), \quad C: [0,1]^n \rightarrow [0,1].
@@ -164,11 +164,15 @@ $((1, k+1 \mid 2, \ldots, k), (2, k+2 \mid 3, \ldots, k+1), \ldots)$
   <em>Figure 4: (Left) Bivariate D-Vine Copula Fit — (Right) Trivariate D-Vine Copula Fit</em>
 </p>
 
+Model successfully captured the strong positive dependencies among traditional equity indices (NASDAQ, S&P 500, Dow Jones, Russell 2000), as evidenced by excellent overlap between simulated (blue) and original (orange) data in these pairwise plots. The model effectively reproduces both linear and non-linear dependence patterns across most variable pairs, with 2D plots showing good alignment in correlation structures and 3D plots demonstrating adequate capture of multivariate relationships. Bitcoin (BTC-USD) exhibits weaker and more scattered dependencies with traditional equity indices, which the D-vine captures with moderate success but shows some density concentration differences. The sequential pairs like ^IXIC vs ^GSPC and ^GSPC vs ^DJI demonstrate particularly strong model performance, reflecting the D-vine's strength in modeling adjacent variables in its path structure. However, the D-vine's sequential path structure may not optimally represent all complex dependencies, as it assumes relationships are primarily mediated through neighboring variables in the ordering, potentially missing direct dependencies between non-adjacent pairs and being sensitive to variable sequencing. For example, if Bitcoin (BTC-USD) and the Russell 2000 (^RUT) are not adjacent in the sequence, their direct relationship must be modeled through intermediate variables, which may explain why plots like ^RUT vs BTC-USD show noticeable density differences between simulated and original data despite both variables having strong individual relationships with other indices.
 
+<h4>2.3.2. C-vines</h4>
 
-- **C-vine:** Star-shaped structure with a central hub (GSP), representing market-driven effects.
+ Star-shaped structure with a central hub (GSP), representing market-driven effects.
 
-- **R-vine:** Fully flexible, data-driven structure capturing asymmetric and non-nested dependencies.
+<h4>2.3.3. R-vines</h4>
+
+ Fully flexible, data-driven structure capturing asymmetric and non-nested dependencies.
 
 Simulations from these vine copulas closely reproduce joint distributions across multiple projections, effectively modeling complex market interactions.
 

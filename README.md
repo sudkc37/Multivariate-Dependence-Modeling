@@ -326,7 +326,7 @@ $$
 \text{VaR}_{0.99} = - \text{Percentile}(R^{(5)}, 0.01) \times V_0
 $$
 
-The following plot depicts the 5-Day Value at Risk (VaR) of the portfolio. 
+**The following plot depicts the 5-Day Value at Risk (VaR) of the portfolio.** 
 
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/VaR.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">

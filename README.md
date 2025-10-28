@@ -78,6 +78,15 @@ where,
 - $\Phi^{-1}$ — inverse standard normal CDF  
 - $u_i \in [0,1]$ — uniform marginals
 
+<p align="center">
+<img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
+ <br>
+  <em>Figure: Bivariate Gaussian Copuls Fit</em>
+</p>
+
+
+
+
 The strong positive correlations among traditional equity indices (NBI, IXIC, GSPC, RUT, DJI) which form tight ellipsoidal clusters in both 2D and 3D visualizations, with simulated data (orange) closely overlapping the original observations (blue). The model also correctly reproduces the weak dependence between BTC-USD and traditional assets, generating appropriately scattered uniform distributions for these pairs. While computationally tractable, it exhibits tail independence:
 
 $$

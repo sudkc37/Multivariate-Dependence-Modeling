@@ -161,7 +161,7 @@ $((1, k+1 \mid 2, \ldots, k), (2, k+2 \mid 3, \ldots, k+1), \ldots)$
 </p>
 
 <p align="center">Vine
-  <em>Figure 3: (Left) Bivariate D-Vine Copula Fit — (Right) Trivariate D-Vine Copula Fit</em>
+  <em>Figure 4: (Left) Bivariate D-Vine Copula Fit — (Right) Trivariate D-Vine Copula Fit</em>
 </p>
 
 

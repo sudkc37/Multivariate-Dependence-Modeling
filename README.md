@@ -81,7 +81,7 @@ where,
 
 
 <p align="center">
-  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Bivariate Gaussian Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine2D.png" alt="Bivariate D-Vine Copula" width="45%" height="30%">
   <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Gausioan-3D.png" alt="Trivariate Gaussian Copula" width="43%" height="30%">
 </p>
 

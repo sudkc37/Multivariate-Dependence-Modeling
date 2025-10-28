@@ -156,12 +156,12 @@ $((1,3 \mid 2), (2,4 \mid 3), \ldots, (d-2,d \mid d-1))$
 $((1, k+1 \mid 2, \ldots, k), (2, k+2 \mid 3, \ldots, k+1), \ldots)$
 
 <p align="center">
-  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Bivariate Gaussian Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine2D.png" alt="Bivariate D- Copula" width="45%" height="30%">
   <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine3D.png" alt="Trivariate D-Vine Copula" width="43%" height="30%">
 </p>
 
-<p align="center">
-  <em>Figure 3: (Left) Bivariate Gaussian Copula Fit — (Right) Trivariate Gaussian Copula Fit</em>
+<p align="center">Vine
+  <em>Figure 3: (Left) Bivariate D-Vine Copula Fit — (Right) Trivariate D-Vine Copula Fit</em>
 </p>
 
 

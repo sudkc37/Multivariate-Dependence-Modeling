@@ -43,7 +43,7 @@ $$
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/log-price.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
  <br>
-  <em>Figure: Six Years Log Price”</em>
+  <em>Figure 1: Six Years Log Price”</em>
 </p>
 
 
@@ -57,7 +57,7 @@ To capture these distributional characteristics more accurately, I fit several p
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/descriptions.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
  <br>
-  <em>Figure: Marginal Distributions</em>
+  <em>Figure 2: Marginal Distributions</em>
 </p>
 
 
@@ -78,10 +78,15 @@ where,
 - $\Phi^{-1}$ — inverse standard normal CDF  
 - $u_i \in [0,1]$ — uniform marginals
 
+
+
 <p align="center">
-<img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
- <br>
-  <em>Figure: Bivariate Gaussian Copuls Fit</em>
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Bivariate Gaussian Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Gausioan-3D.png" alt="Trivariate Gaussian Copula" width="43%" height="30%">
+</p>
+
+<p align="center">
+  <em>Figure 3: (Left) Bivariate Gaussian Copula Fit — (Right) Trivariate Gaussian Copula Fit</em>
 </p>
 
 
@@ -106,10 +111,60 @@ $$
 Fitted parameters confirm stronger lower-tail clustering, consistent with the empirical evidence of joint market crashes. Simulations based on this copula reproduce joint crash behavior observed in real data.
 
 <h4>2.3. Vine Copulas</h4>
-High-dimensional dependence structures are modeled using vine copulas which decompose multivariate dependencies into bivariate components:
 
-- **D-vine:** Sequential structure capturing local dependencies  
-  (e.g., strong symmetric dependence between IXIC–GSPC, modeled by the Frank copula).
+High-dimensional dependence structures are modeled using vine copulas which decompose multivariate dependencies into bivariate components. For a $d$-dimensional continuous random vector $(X_1, X_2, \ldots, X_d)$ with marginal densities $f_i(x_i)$ and corresponding cumulative distribution functions $F_i(x_i)$, the joint density function can be decomposed into a product of its marginal densities and a series of conditional bivariate copula densities as follows:
+
+$$
+f(x_1, \ldots, x_d)
+= \prod_{i=1}^{d} f_i(x_i)
+  \cdot
+  \prod_{j=1}^{d-1} \prod_{i=1}^{d-j}
+  c_{i,\,i+j \mid i+1,\,\ldots,\,i+j-1}
+  \left(
+    F(x_i \mid x_{i+1}, \ldots, x_{i+j-1}),
+    F(x_{i+j} \mid x_{i+1}, \ldots, x_{i+j-1})
+  \right),
+$$
+
+where $c_{i,j \mid D}$ denotes a bivariate copula density describing the conditional dependence between variables $X_i$ and $X_j$ given the conditioning set $D$.
+
+<h4>2.3.1. D-vines</h4>
+
+It is used for sequential structure capturing local dependencies. For a D-vine with ordering $(1, 2, \ldots, d)$, the joint density can be decomposed as:
+
+$$
+f(x_1, \ldots, x_d) =
+\prod_{i=1}^{d} f_i(x_i)
+\cdot
+\prod_{j=1}^{d-1} \prod_{i=1}^{d-j} 
+c_{i, i+j \mid i+1, \ldots, i+j-1}
+$$
+
+where $(c_{i,j \mid D})$ denotes a **bivariate copula density** describing the conditional dependence between $(X_i)$ and $(X_j)$ given the conditioning set $D$.
+
+
+
+**Structure of the D-vine**
+
+- **Tree 1:** Sequential pairs  
+$((1,2), (2,3), (3,4), \ldots, (d-1,d))$
+
+- **Tree 2:** Pairs conditioned on the variable in between  
+$((1,3 \mid 2), (2,4 \mid 3), \ldots, (d-2,d \mid d-1))$
+
+- **Tree \(k\):** Pairs with \(k-1\) conditioning variables  
+$((1, k+1 \mid 2, \ldots, k), (2, k+2 \mid 3, \ldots, k+1), \ldots)$
+
+<p align="center">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/gausioan.png" alt="Bivariate Gaussian Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Gausioan-3D.png" alt="Trivariate Gaussian Copula" width="43%" height="30%">
+</p>
+
+<p align="center">
+  <em>Figure 3: (Left) Bivariate Gaussian Copula Fit — (Right) Trivariate Gaussian Copula Fit</em>
+</p>
+
+
 
 - **C-vine:** Star-shaped structure with a central hub (GSP), representing market-driven effects.
 

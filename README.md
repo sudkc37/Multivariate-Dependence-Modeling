@@ -33,7 +33,7 @@ maps returns to uniform $[0,1]$ variables, where copulas operate naturally.  Tai
 
 
 <h3>1. Data and Marginal Analysis</h3>
-I analyzed six years (2019–2025) of daily returns for a diversified portfolio comprising major equity indices such as NBI, IXIC, GSPC, RUT, DJI, and Bitcoin (BTC-USD).  All returns are transformed to log returns are computed as:
+I analyzed six years (2019–2025) of daily returns for a diversified portfolio comprising major equity indices such as NBI, IXIC, GSPC, RUT, DJI, and Bitcoin (BTC-USD).  All returns are transformed to log returns and are computed as:
 
 $$
 r_t = \log\left(\frac{P_t}{P_{t-1}}\right)

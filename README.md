@@ -215,7 +215,7 @@ where:
 **Our observation:**
 
   <p align="center">
-  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine2D.png" alt="Bivariate D- Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Rvine2D.png" alt="Bivariate R-Vine Copula" width="45%" height="30%">
   <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine3D.png" alt="Trivariate D-Vine Copula" width="43%" height="30%">
 </p>
 

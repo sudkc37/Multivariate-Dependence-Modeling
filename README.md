@@ -168,11 +168,63 @@ Model successfully captured the strong positive dependencies among traditional e
 
 <h4>2.3.2. C-vines</h4>
 
- Star-shaped structure with a central hub (GSP), representing market-driven effects.
+For a Canonical Vine (C-vine) with root nodes $(1, 2, \ldots, d-1\)$, the joint density can be expressed as:
+
+$$
+f(x_1, \ldots, x_d) =
+\prod_{i=1}^{d} f_i(x_i)
+\cdot
+\prod_{j=1}^{d-1} \prod_{i=j+1}^{d}
+c_{j, i \mid 1, \ldots, j-1}
+$$
+
+where $(c_{j, i \mid 1, \ldots, j-1}\)$ represents a bivariate copula density describing the conditional dependence between variables $(X_j\) and \(X_i\)$ given the conditioning variables $(X_1, \ldots, X_{j-1}\)$.
+
+
+
+**Structure of the C-vine**
+
+- **Tree 1:** Star structure with a root node (e.g., node 1):  
+  $((1,2), (1,3), \ldots, (1,d)\)$
+
+- **Tree 2:** Star structure with a new root (e.g., node 2):  
+  $((2,3 \mid 1), (2,4 \mid 1), \ldots, (2,d \mid 1)\)$
+
+- **Tree \(k\):** Each subsequent tree has a new root and adds one more conditioning variable:  
+  $((k, k+1 \mid 1, \ldots, k-1), (k, k+2 \mid 1, \ldots, k-1), \ldots\)$
+
+Each tree in the C-vine has a central node connected to all others, forming a hierarchical starstructure. The Star-shaped structure with a central hub (GSP) represents market-driven effects.
 
 <h4>2.3.3. R-vines</h4>
 
- Fully flexible, data-driven structure capturing asymmetric and non-nested dependencies.
+Regular vines (R-vine) are the most general class of vine copulas, encompassing both C-vines and D-vines as special cases.The joint density for a $d$-dimensional continuous random vector is expressed as:
 
-Simulations from these vine copulas closely reproduce joint distributions across multiple projections, effectively modeling complex market interactions.
+$$
+f(x_1, \ldots, x_d) =
+\prod_{i=1}^{d} f_i(x_i)
+\cdot
+\prod_{k=1}^{d-1}
+\prod_{e \in E_k}
+c_e
+$$
+
+where:
+- $( E_k \)$ — the set of edges in tree $( T_k \)$,
+- $( c_e \)$ — the copula density associated with edge $( e \)$, representing the dependence between variables connected by that edge (possibly conditional on others).
+
+**Our observation:**
+
+  <p align="center">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine2D.png" alt="Bivariate D- Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/D-vine3D.png" alt="Trivariate D-Vine Copula" width="43%" height="30%">
+</p>
+
+<p align="center">Vine
+  <em>Figure 4: (Left) Bivariate D-Vine Copula Fit — (Right) Trivariate D-Vine Copula Fit</em>
+</p>
+
+**Proximity Condition**
+
+In tree $( T_j \)$, two nodes can be connected only if their corresponding edges in the previous tree $( T_{j-1} \)$ share a common node. This ensures the hierarchical structure and conditional dependence consistency of the R-vine construction.
+
 

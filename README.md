@@ -45,7 +45,12 @@ The analysis reveals significant deviations from normality:
 - **Skewness:** Most series show negative skewness indicating a higher likelihood of extreme losses.  
 - **Non-normality:** Visual inspection confirms clear departures from the bell-curve shape.
 
-<img width="727" alt="Screenshot 2024-11-05 at 11 00 58 AM" src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/edit/master/README.md#:~:text=descriptions.png">
+
+<p align="center">
+<img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/descriptions.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
+ <br>
+  <em>Figure: Marginal Distributions”</em>
+</p>
 
 To capture these distributional characteristics more accurately, I fit several parametric distributions like Normal, Student-t, and Cauchy. The Student-t and Cauchy models provide a superior fit, particularly in the tails. To ensure robustness, I also employ empirical cumulative distribution functions (CDFs), which avoid restrictive parametric assumptions and offer improved tail modeling performance.
 

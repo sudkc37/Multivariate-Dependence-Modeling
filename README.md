@@ -195,6 +195,17 @@ where $(c_{j, i \mid 1, \ldots, j-1}\)$ represents a bivariate copula density de
 
 Each tree in the C-vine has a central node connected to all others, forming a hierarchical starstructure. The Star-shaped structure with a central hub (GSP) represents market-driven effects.
 
+
+<p align="center">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Cvine2D.png" alt="Bivariate C-Vine Copula" width="45%" height="30%">
+  <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/Rvine3D.png" alt="Trivariate R-Vine Copula" width="43%" height="30%">
+</p>
+
+<p align="center">Vine
+  <em>Figure 4: (Left) Bivariate R-Vine Copula Fit — (Right) Trivariate R-Vine Copula Fit</em>
+</p>
+
+
 <h4>2.3.3. R-vines</h4>
 
 Regular vines (R-vine) are the most general class of vine copulas, encompassing both C-vines and D-vines as special cases.The joint density for a $d$-dimensional continuous random vector is expressed as:

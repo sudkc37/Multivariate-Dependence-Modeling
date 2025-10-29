@@ -194,7 +194,7 @@ Each tree in the C-vine has a central node connected to all others, forming a hi
 </p>
 
 <p align="center">Vine
-  <em>Figure 4: (Left) Bivariate C-Vine Copula Fit — (Right) Trivariate C-Vine Copula Fit</em>
+  <em>Figure 5: (Left) Bivariate C-Vine Copula Fit — (Right) Trivariate C-Vine Copula Fit</em>
 </p>
 
 The model's star structure, where each tree has a central node connecting to all others appears effective for modeling relationships where one variable acts as a hub. This phenomenon is visible in plots involving major indices that show consistent correlation patterns. However, the C-vine's structure imposes a rigid hierarchical dependency assumption where all relationships must flow through central nodes at each level. For example, in plots like ^IXIC vs ^RUT or BTC-USD vs ^DJI, the visible dispersion between simulated and original data suggests that forcing these relationships to be mediated through a central variable (rather than allowing direct connections) may inadequately capture the true dependence structure. This limitation becomes evident when variables like Bitcoin have fundamentally different market drivers than traditional equity indices and may not naturally relate through the same hub variables.
@@ -228,7 +228,7 @@ In tree $( T_j \)$, two nodes can be connected only if their corresponding edges
 </p>
 
 <p align="center">Vine
-  <em>Figure 4: (Left) Bivariate R-Vine Copula Fit — (Right) Trivariate R-Vine Copula Fit</em>
+  <em>Figure 6: (Left) Bivariate R-Vine Copula Fit — (Right) Trivariate R-Vine Copula Fit</em>
 </p>
 
 The model successfully captures both strong dependencies among equity indices (^IXIC vs ^GSPC, ^GSPC vs ^DJI) and weaker, more complex relationships involving Bitcoin, with particularly improved performance visible in plots like ^RUT vs BTC-USD vs ^DJI and ^NBI vs BTC-USD where the density distributions align more closely than in the D-vine results. The 3D plots reveal that the R-vine effectively models conditional dependencies and multivariate structures without being constrained to sequential paths, allowing direct modeling of relationships between any variable pairs regardless of their position in the structure. However, the R-vine's increased flexibility comes at the cost of higher computational complexity and potential overfitting risk—for example, in plots like ^RUT vs BTC-USD vs ^DJI, while the simulated data closely matches the original's dense clustering patterns, this tight fit may indicate the model is capturing sample-specific noise rather than generalizable market relationships, particularly problematic given Bitcoin's high volatility and relatively short history compared to traditional equity indices, which could lead to poor performance when market dynamics shift.
@@ -331,7 +331,7 @@ $$
 <p align="center">
 <img src="https://github.com/sudkc37/Multivariate-Dependence-Modeling/blob/master/plots/VaR.png" alt="Screenshot 2024-12-09 at 2 17 15 PM" width="950" height="500">
  <br>
-  <em>Figure 1: Portfolio VaR</em>
+  <em>Figure 7: Portfolio VaR</em>
 </p>
 
 

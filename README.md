@@ -3,7 +3,7 @@
   <h2>Copula-Based Multivariate Dependence Modeling and Tail Risk Assessment in Financial Portfolios: Mathematical Foundations and Applications</h2>
 
   <p><i>Sudip Khadka</i></p>
-  <p><i>Linear Statistical Modeling & Financial Risk Management</i></p>
+  <p><i>Financial Risk Management</i></p>
   <p><i>University of Maryland, College Park</i></p>
 </div>
 
